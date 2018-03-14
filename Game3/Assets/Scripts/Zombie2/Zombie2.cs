@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zombie2 : MonoBehaviour {
+public class Zombie2 : Character {
 
 	public float speed; 
 	public float stoppingDistance;
@@ -15,12 +15,12 @@ public class Zombie2 : MonoBehaviour {
 	public GameObject projectile;
 	private Transform player;
 
-	void Start() {
+	public override void Start() {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 
 		timeBtwShots = startTimeBtwShots;
 
-		health = 70;
+		health = 50;
 	}
 
 	void Update() {
@@ -42,6 +42,26 @@ public class Zombie2 : MonoBehaviour {
 		Death ();
 	}
 
+	void FixedUpdate () {
+		LookAtTarget();
+	}
+
+	private void LookAtTarget()
+	{
+		if (player != null)
+		{
+			float xDir = player.transform.position.x - transform.position.x;
+			if (xDir < 0 && facingRight || xDir > 0 && !facingRight)
+			{
+				ChangeDirection();
+			}
+		}
+//		else
+//		{
+//			player = enemyFollow.player;
+//		}
+	}
+
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.CompareTag("bullet"))
@@ -54,6 +74,8 @@ public class Zombie2 : MonoBehaviour {
 	{
 		if (health <= 0)
 		{
+			FindObjectOfType<SoundEffectManager>().Play ("Zombie2Death");
+
 			Destroy(gameObject, 0.1f);
 		}
 	}

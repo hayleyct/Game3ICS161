@@ -12,7 +12,7 @@ public class Zombie1 : Character
 	// Use this for initialization
 	public override void Start () {
         base.Start();
-        Health = 50;
+        Health = 70;
 	}
 
     private void Update()
@@ -62,6 +62,8 @@ public class Zombie1 : Character
     {
         if (Health <= 0)
         {
+			FindObjectOfType<SoundEffectManager>().Play ("Zombie1Death");
+
             Destroy(gameObject, 0.1f);
         }
     }

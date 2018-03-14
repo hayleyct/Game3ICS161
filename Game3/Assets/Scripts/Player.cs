@@ -36,6 +36,7 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.CompareTag ("Zombie")) {
+			FindObjectOfType<SoundEffectManager>().Play ("PlayerDmg");
 			playerHealth -= 10;
 			setHealthText ();
 		}
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("ZombBullet")) {
+			FindObjectOfType<SoundEffectManager>().Play ("PlayerDmg");
 			playerHealth -= 5;
 			setHealthText ();
 		}

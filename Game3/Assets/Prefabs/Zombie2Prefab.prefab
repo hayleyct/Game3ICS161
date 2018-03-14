@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114241546600553558}
   - component: {fileID: 95271826957577928}
   - component: {fileID: 114987940255813454}
+  - component: {fileID: 82737431715471008}
   m_Layer: 0
   m_Name: Zombie2Prefab
   m_TagString: Zombie
@@ -157,6 +158,86 @@ PolygonCollider2D:
       - {x: 0.03, y: -1.1899999}
       - {x: 0.08, y: -1.03}
       - {x: 0.13, y: -1.16}
+--- !u!82 &82737431715471008
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235840742229498}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 198db0e614dd84056917914c4e715f30, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.676
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95271826957577928
 Animator:
   serializedVersion: 3
@@ -180,14 +261,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235840742229498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c030fd25c8a0bb54195d7c6b6a12dad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
   stoppingDistance: 0
-  target: {fileID: 0}
+  target: {fileID: 4742831458322294, guid: c4e34ca8965354363a741ad5772beb4c, type: 2}
 --- !u!114 &114987940255813454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,9 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5233cf2d7147b4242bcaf9e3c70802e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 0
+  facingRight: 0
+  Health: 0
   speed: 4
   stoppingDistance: 7
-  retreatDistance: 7
+  retreatDistance: 10
   health: 0
   startTimeBtwShots: 2
   projectile: {fileID: 1370623214447484, guid: 222d2e5b1549648eaa06baed67cb9168, type: 2}
