@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
 	public int invulnerableCooldown;
 
 	private GameObject sprite;
-    private int level;
+    public int level;
 
     private float timer;
     private float flashCooldown;
@@ -110,5 +110,14 @@ public class Player : MonoBehaviour {
 			bullet.transform.position = bulletSpawn.transform.position;
 			bullet.GetComponent<Bullet> ().Initialize (Vector2.left);
 		}
+	}
+
+	public void saveLevel() {
+		PlayerPrefs.SetInt ("Level", level);
+	}
+
+	public int getSavedLevel() {
+		int tempLevel = PlayerPrefs.GetInt ("Level");
+		return tempLevel;
 	}
 }
