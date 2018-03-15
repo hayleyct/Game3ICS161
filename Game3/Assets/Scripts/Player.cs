@@ -28,8 +28,6 @@ public class Player : MonoBehaviour {
 		if (SceneManager.GetActiveScene ().buildIndex == 1) {
 			score = 0;
 			level = 1;
-			setCountText ();
-			setHealthText ();
 		}
 		sprite = transform.Find("Sprite").gameObject;
 		timer = 0;
@@ -87,20 +85,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public void setCountText() {
-		scoreText.text = "Score: " + score.ToString ();
-	}
-
-	public void setHealthText() {
-		// playerHealthText.text = "Health: " + playerHealth.ToString ();
-		// if (playerHealth < 0) {
-			//SceneManager.LoadScene ("GameOver");
-		// }
-	}
-
 	void Shoot() {
-		//		GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
-		//		bullet.transform.position = bulletSpawn.transform.position;
 		if (pltfmChr2D.m_FacingRight) {
 			GameObject bullet = (GameObject)Instantiate (bulletPrefab, transform.position, Quaternion.identity);
 			bullet.transform.position = bulletSpawn.transform.position;

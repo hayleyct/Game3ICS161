@@ -5,14 +5,16 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour {
 
     [SerializeField] protected float movementSpeed;
-    public bool facingRight;
+    [SerializeField] protected float stoppingDistance;
+    public Transform player;
     public int Health;
-
-    public bool Attack { get; set; }
     public Animator myAnim { get; private set; }
+    public bool isDead { get; set; }
 
-	// Use this for initialization
-	public virtual void Start () {
+    protected bool facingRight;
+
+    // Use this for initialization
+    public virtual void Start () {
 
         if (transform.rotation == Quaternion.Euler(0, 0 ,0))
         {
@@ -23,11 +25,6 @@ public abstract class Character : MonoBehaviour {
             facingRight = false;
         }
         myAnim = GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
     public void ChangeDirection()

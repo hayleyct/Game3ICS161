@@ -3,33 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Zombie2 : Character {
-
-	public float speed; 
-	public float stoppingDistance;
+ 
+	//public float stoppingDistance;
 	public float retreatDistance;
-	[SerializeField] public float health; 
 
-	private float timeBtwShots;
+
+    private Animator anim;
+    private float timeBtwShots;
 	public float startTimeBtwShots;
 
 	public GameObject projectile;
-	private Transform player;
 
 	public override void Start() {
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
+        player = GameObject.FindGameObjectWithTag ("Player").transform;
 
 		timeBtwShots = startTimeBtwShots;
-
-		health = 50;
+        anim = GetComponent<Animator>();
 	}
 
 	void Update() {
-		if (Vector2.Distance (transform.position, player.position) > stoppingDistance) {
-			transform.position = Vector2.MoveTowards (transform.position, player.position, speed * Time.deltaTime);
-		} else if(Vector2.Distance (transform.position, player.position) < stoppingDistance && Vector2.Distance (transform.position, player.position) > retreatDistance) {
+		if (Vector2.Distance (transform.position, player.position) > stoppingDistance && !isDead) {
+			transform.position = Vector2.MoveTowards (transform.position, player.position, movementSpeed * Time.deltaTime);
+		} else if(Vector2.Distance (transform.position, player.position) < stoppingDistance && Vector2.Distance (transform.position, player.position) > retreatDistance && !isDead) {
 			transform.position = this.transform.position;
-		} else if(Vector2.Distance (transform.position, player.position) < retreatDistance) {
-			transform.position = Vector2.MoveTowards (transform.position, player.position, -speed * Time.deltaTime);
+		} else if(Vector2.Distance (transform.position, player.position) < retreatDistance && !isDead) {
+			transform.position = Vector2.MoveTowards (transform.position, player.position, -movementSpeed * Time.deltaTime);
 		}
 
 		if (timeBtwShots <= 0) {
@@ -39,11 +37,12 @@ public class Zombie2 : Character {
 			timeBtwShots -= Time.deltaTime; 
 		}
 
-		Death ();
+		
 	}
 
 	void FixedUpdate () {
-		LookAtTarget();
+        Death();
+        LookAtTarget();
 	}
 
 	private void LookAtTarget()
@@ -56,83 +55,24 @@ public class Zombie2 : Character {
 				ChangeDirection();
 			}
 		}
-//		else
-//		{
-//			player = enemyFollow.player;
-//		}
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.CompareTag("bullet"))
 		{
-			health -= 10;
+			Health -= 10;
 		}
 	}
 
 	public void Death()
 	{
-		if (health <= 0)
+		if (Health <= 0)
 		{
-			FindObjectOfType<SoundEffectManager>().Play ("Zombie2Death");
-
-			Destroy(gameObject, 0.1f);
+            FindObjectOfType<SoundEffectManager>().Play("Zombie2Death");
+            isDead = true;
+            anim.SetBool("Death", true);
+            Destroy(gameObject, 0.7f);
 		}
 	}
-
-//	private IZombie2State currentState;
-//	[SerializeField] EnemyFollow enemyFollow;
-//	private Transform target;
-//
-//	// Use this for initialization
-//	public override void Start () {
-//		base.Start();
-//		Health = 70;
-//	}
-//
-//	private void Update()
-//	{
-//		Death();
-//	}
-//
-//	void FixedUpdate () {
-//		LookAtTarget();
-//	}
-//
-//	private void LookAtTarget()
-//	{
-//		if (target != null)
-//		{
-//			float xDir = target.transform.position.x - transform.position.x;
-//			if (xDir < 0 && facingRight || xDir > 0 && !facingRight)
-//			{
-//				ChangeDirection();
-//			}
-//		}
-//		else
-//		{
-//			target = enemyFollow.target;
-//		}
-//	}
-//
-//	private void OnCollisionEnter2D(Collision2D collision)
-//	{
-//		if (collision.gameObject.CompareTag("bullet"))
-//		{
-//			Health -= 10;
-//		}
-//	}
-//
-//	public new void Attack()
-//	{
-//		myAnim.SetBool("Attack", true);
-//	}
-//
-//	public void Death()
-//	{
-//		if (Health <= 0)
-//		{
-//			Destroy(gameObject, 0.1f);
-//		}
-//	}
 }

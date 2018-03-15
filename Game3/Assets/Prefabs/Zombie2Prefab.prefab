@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 50688465689669790}
   - component: {fileID: 60961263229770556}
   - component: {fileID: 58657730856020212}
-  - component: {fileID: 114241546600553558}
   - component: {fileID: 95271826957577928}
   - component: {fileID: 114987940255813454}
   - component: {fileID: 82737431715471008}
@@ -255,20 +254,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114241546600553558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1235840742229498}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c030fd25c8a0bb54195d7c6b6a12dad2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  stoppingDistance: 0
-  target: {fileID: 4742831458322294, guid: c4e34ca8965354363a741ad5772beb4c, type: 2}
 --- !u!114 &114987940255813454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,13 +265,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5233cf2d7147b4242bcaf9e3c70802e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
-  facingRight: 0
-  Health: 0
-  speed: 2
+  movementSpeed: 2
   stoppingDistance: 7
+  player: {fileID: 4742831458322294, guid: c4e34ca8965354363a741ad5772beb4c, type: 2}
+  Health: 30
   retreatDistance: 10
-  health: 0
   startTimeBtwShots: 2
   projectile: {fileID: 1370623214447484, guid: 222d2e5b1549648eaa06baed67cb9168, type: 2}
 --- !u!212 &212863964858916032

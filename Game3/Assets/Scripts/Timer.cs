@@ -11,12 +11,9 @@ public class Timer : MonoBehaviour {
 	public GameObject NextLevelMenu;
     [SerializeField] PlayerHealth player;
 
-	private int level;
-
 	// Use this for initialization
 	void Start () {
 		timerText = GetComponent<Text> ();
-		level = 1;
 	}
 
 	// Update is called once per frame
