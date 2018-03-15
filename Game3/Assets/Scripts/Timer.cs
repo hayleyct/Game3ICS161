@@ -8,16 +8,16 @@ public class Timer : MonoBehaviour {
 
 	public float timeLeft = 60;
 	public Text timerText;
-    [SerializeField] Player player;
+    [SerializeField] PlayerHealth player;
 
-	private int level; 
+	private int level;
 
 	// Use this for initialization
 	void Start () {
 		timerText = GetComponent<Text> ();
-		level = 1; 
+		level = 1;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		timeLeft -= Time.deltaTime;
@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour {
 	}
 
 	void loadNextLevel() {
-		level = SceneManager.GetActiveScene ().buildIndex; 
+		level = SceneManager.GetActiveScene ().buildIndex;
 		SceneManager.LoadScene (level + 1);
 	}
 }
