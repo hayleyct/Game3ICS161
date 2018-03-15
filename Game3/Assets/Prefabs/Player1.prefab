@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50774866213005926}
   - component: {fileID: 114132934972053230}
   - component: {fileID: 114871511526098568}
-  - component: {fileID: 114397830024802032}
+  - component: {fileID: 114390561283520168}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -168,8 +168,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094279505933998}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9, y: -1.3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -11.64, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4913410094249828}
@@ -302,7 +302,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_FacingRight: 1
---- !u!114 &114397830024802032
+--- !u!114 &114390561283520168
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -320,7 +320,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1850713334810948, guid: b562b1f064abb40f3b6e2fff080cf437,
     type: 2}
   bulletSpawn: {fileID: 1622976875995090}
-  playerHealth: 100
+  invulnerableCooldown: 2
 --- !u!114 &114871511526098568
 MonoBehaviour:
   m_ObjectHideFlags: 1
