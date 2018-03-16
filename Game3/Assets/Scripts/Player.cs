@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 	public Text playerHealthText;
 	public GameObject bulletPrefab;
 	public GameObject bulletSpawn;
-	public int invulnerableCooldown;
+	public float invulnerableCooldown;
 
 	private GameObject sprite;
     public int level;

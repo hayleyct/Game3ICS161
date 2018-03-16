@@ -38,7 +38,6 @@ public class Timer : MonoBehaviour {
 	}
 
 	IEnumerator Wait(float waitTime) {
-		Debug.Log ("waiting");
 		yield return new WaitForSeconds(waitTime);
 	}
 }
